@@ -1,0 +1,28 @@
+Metadata-Version: 2.1
+Name: nyml
+Version: 1.0.0
+Summary: Not-Your-ML is a library made for the process of learning what it means to build a library and to further explore the depths of deep learning.
+Home-page: UNKNOWN
+Author: Bryan Gass
+Author-email: bagass@wpi.edu
+License: UNKNOWN
+Project-URL: Documentation, https://nyml.readthedocs.io/en/stable
+Project-URL: Source Code, https://github.com/BeeGass/Not-Your-ML-Library
+Platform: UNKNOWN
+Classifier: License :: OSI Approved :: GNU General Public License v2 (GPLv2)
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Operating System :: OS Independent
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Education/Academia
+Classifier: Framework :: Sphinx
+Classifier: Framework :: Pytest
+Classifier: Topic :: Scientific/Engineering :: Artificial Intelligence
+Classifier: Topic :: Scientific/Engineering :: Deep Learning
+Classifier: Topic :: Scientific/Engineering :: Supervised Learning
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Description-Content-Type: text/markdown
+
+# Not-Your-ML-Library
+
+
