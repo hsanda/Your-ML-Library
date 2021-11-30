@@ -1,5 +1,7 @@
 from typing import Callable
 import numpy as np
+from scipy.optimize import line_search
+NORM = np.linalg.norm
 
 class optimization():
     def __init__(self) -> None:
@@ -324,8 +326,37 @@ class optimization():
     def truncated_newton(self):
         pass
 
-    def fletcher_reeves(self):
-        pass
+    """
+    Fletcher Reeves (FR)
+    Args:
+        params (np.list): containing the parameters of the model
+        loss_function (Callable): loss function
+        d_loss_function (Callable): derivative of the loss function
+        tolerance (float): Tolerance
+        alpha_1 (float): Parameter for Armijo condition rule.
+        alpha_2 (float): Parameter for curvature condition rule.
+    Returns:
+        <list>: The optimized parameters
+    """
+    def fletcher_reeves(self, xk_params: np.ndarray, loss_function:Callable, d_loss_function:Callable, tolerance=10**-5, alpha_1=10**-4, alpha_2=.38):
+        gk = d_loss_function(xk_params)
+        pk = -gk
+        while True:
+            # Search for the step size Alpha [Wolfe condition]
+            alpha = line_search(f=loss_function, myfprime=d_loss_function, \
+                xk=xk_params, pk=pk, c1=alpha_1, c2=alpha_2)[0]
+            if alpha != None:
+                xk1 = xk_params + alpha*pk
+            
+            if NORM(d_loss_function(xk1)) < tolerance:
+                return xk1
+            else:
+                # Update for next iteration
+                xk_params = xk1
+                gk_old = gk # old just for Fletcher calc below
+                gk = d_loss_function(xk_params)
+                beta_fr = NORM(gk)**2/NORM(gk_old)**2 # The Fletcher-Reeves algorithm
+                pk = -gk + beta_fr*pk
 
     
     # ----------------------------------------------------------------------------------------------------------------------
